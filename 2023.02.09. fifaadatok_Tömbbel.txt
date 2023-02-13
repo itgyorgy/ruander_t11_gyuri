@@ -1,0 +1,113 @@
+<script>
+//1. érték: Csapat neve (nev)
+//2. érték: Csapat helyezése (helyezes)
+//3. érték: Csapat helyének változása (valtozas)
+//4. érték: Csapat Pontszama (pont)
+
+const csapatAdat = [
+"Anglia;4;0;1662", 
+"Argentína;10;0;1614", 
+"Belgium;1;0;1752", 
+"Brazília;3;-1;1719", 
+"Chile;17;-3;1576", 
+"Dánia;14;-1;1584", 
+"Franciaország;2;1;1725", 
+"Hollandia;13;3;1586", 
+"Horvátország;8;-1;1625", 
+"Kolumbia;9;-1;1622", 
+"Mexikó;12;0;1603", 
+"Németország;16;-1;1580", 
+"Olaszország;15;1;1583", 
+"Peru;19;0;1551", 
+"Portugália;5;1;1643", 
+"Spanyolország;7;2;1631", 
+"Svájc;11;0;1604", 
+"Svédország;18;0;1560", 
+"Szenegál;20;0;1546", 
+"Uruguay;6;-1;1639"
+];
+
+
+//Objektum típusú tömb készítése
+
+function ObjektumFeltoto(feltoltendoElem){
+	var beolvasottAdat=[];
+    for(let i=0;i<feltoltendoElem.length;i++){
+    	let objektum={};
+        let daraboltAdatSor=feltoltendoElem[i].split(';');
+        objektum.nev=daraboltAdatSor[0];
+        objektum.helyezes=daraboltAdatSor[1];
+        objektum.valtozas=daraboltAdatSor[2];
+        objektum.pontszam=daraboltAdatSor[3];
+        beolvasottAdat.push(objektum);
+    }
+    return beolvasottAdat;
+}
+const fifaAdatok=ObjektumFeltoto(csapatAdat);
+document.write("<table border=\"1\">");
+document.write("<tr><th>Név</th><th>Helyezés</th><th>Változás</th><th>Pontszám</th></tr>");
+for(let i=0;i<fifaAdatok.length;i++){
+	document.write(`<tr><td>${fifaAdatok[i].nev}</td><td>${fifaAdatok[i].helyezes}</td><td>${fifaAdatok[i].valtozas}</td><td>${fifaAdatok[i].pontszam}</td></tr>`);
+}
+document.write("</table>");
+
+
+
+//1) Hány csapat szerepel a ranglistán?
+// document.write(`<br>A csapatok száma: ${fifaAdatok.length} csapat szerepel a ranglistán <hr>`);
+
+function CsapatokSzama (csapatszam){
+	return csapatszam;
+}
+
+let csapatszam = CsapatokSzama (fifaAdatok.length)
+document.write(`<br><b>A csapatok száma:</b> ${csapatszam} csapat szerepel a ranglistán <br>`);
+
+
+
+//2) Mennyi a résztvevő csapatok átlagpontszáma
+function PontokOsszege(pontszamokListaja){
+	let aPontokOsszegeFvVisszadja=0;
+    for (i=0; i<pontszamokListaja.length; i++){
+    	aPontokOsszegeFvVisszadja = aPontokOsszegeFvVisszadja + Number(pontszamokListaja[i].pontszam);
+    }
+    return aPontokOsszegeFvVisszadja;
+}
+
+let pontosszegEredmeny = PontokOsszege(fifaAdatok);
+
+
+function Atlagpontszam(osszpontszam, csapatokszama){
+	return osszpontszam/csapatokszama;
+}
+
+let atlag = Atlagpontszam (pontosszegEredmeny, csapatszam);
+
+document.write(`<br><b>A ${pontosszegEredmeny} pontösszeg ${csapatszam} csapatának átlaga:</b> ${atlag}<br>`);
+
+
+
+//3 Átlagnál több pontot elérő csapatok listája
+document.write(`<br><b>${atlag} átlagontszám felett teljesítő csapatok: </b><br>`);
+function AtlagnalNagyobbEredmenyCsapatok (csapat, atlag) {
+	let azAtlagnalNagyobbEredmenyCsapatokFvVisszadja=[];
+    j=0;
+    for (i=0; i<csapat.length; i++){
+    	if (csapat[i].pontszam>atlag) {
+    		azAtlagnalNagyobbEredmenyCsapatokFvVisszadja.push(csapat[i].nev) ;
+            document.write(`A(z) ${i+1}. helyen induló: ${csapat[i].nev} <br>`);
+            j++;
+        }       
+    }
+    document.write(`<br><b>Összesen ${j} csapat teljesített átlag felett </b><br>`);
+    return azAtlagnalNagyobbEredmenyCsapatokFvVisszadja;
+}
+
+
+
+let atlagnalJobbCsapatok = AtlagnalNagyobbEredmenyCsapatok (fifaAdatok, atlag);
+//document.write(`<br> ${atlag} átlagontszám felett teljesítő csapatok: <br> ${atlagnalJobbCsapatok} <br>`);
+
+
+</script>
+
