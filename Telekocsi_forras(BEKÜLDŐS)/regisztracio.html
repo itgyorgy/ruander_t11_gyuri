@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telekocsi</title>
+    <link rel="stylesheet" href="telekocsi.css">
+</head>
+
+<body>
+
+    <div class="tartalom">
+        <h1>Telekocsi</h1>
+        <div class="menu">
+            <ul>
+                <li>Bemutatkozás</li>
+                <li>Sofőröknek</li>
+                <li>Utasoknak</li>
+                <li>Bejelentkezés</li>
+                <li a href="telekocsi.html">Regisztráció</li>
+            </ul>
+        </div>
+
+        <h2>Regisztráció</h2>
+
+        <label for="nev">Név:</label>
+        <input type="text" name="nev" id="nev">
+
+        <label for="email">E-mail cím:</label>
+        <input type="email" name="email" id="email">
+
+        <label for="jelszo">Jelszó:</label>
+        <input type="password" name="jelszo" id="jelszo" placeholder="add meg a jelszót">
+
+        <label for="jelszo2">Jelszó ismét:</label>
+        <input type="password" name="jelszo2" id="jelszo2" placeholder="add meg újra a jelszót">
+
+        <button id="mentes">Mentés</button>
+
+        <script>
+            mentes.addEventListener('click', Regisztracio());
+            function Regisztracio() {
+                if (jelszo == jelszo2) {
+                    return sikeres
+                } else {
+                    return sikertelen
+                }
+            }
+
+
+
+        </script>
+
+    </div>
+
+</body>
+
+</html>
